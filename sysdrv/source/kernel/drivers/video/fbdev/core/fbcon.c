@@ -88,7 +88,7 @@
 #  define DPRINTK(fmt, args...)
 #endif
 
-#define CURSOR_ENABLE 0
+#define CURSOR_ENABLE 1
 #define SHOW_CENTER 1
 /*
  * FIXME: Locking
@@ -1054,6 +1054,7 @@ static void fbcon_init(struct vc_data *vc, int init)
 	if (logo_shown < 0 && console_loglevel <= CONSOLE_LOGLEVEL_QUIET)
 		logo_shown = FBCON_LOGO_DONTSHOW;
 
+	logo_shown = FBCON_LOGO_DONTSHOW;
 	if (vc != svc || logo_shown == FBCON_LOGO_DONTSHOW ||
 	    (info->fix.type == FB_TYPE_TEXT))
 		logo = 0;
