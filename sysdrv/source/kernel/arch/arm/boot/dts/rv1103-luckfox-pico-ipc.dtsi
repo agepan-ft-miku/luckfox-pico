@@ -6,7 +6,7 @@
 
 / {
 	chosen {
-		bootargs = "earlycon=uart8250,mmio32,0xff4c0000 console=ttyFIQ0 root=/dev/mmcblk1p7 rootwait snd_soc_core.prealloc_buffer_size_kbytes=16 coherent_pool=0";
+		bootargs = "earlycon=uart8250,mmio32,0xff4c0000 console=tty1 root=/dev/mmcblk1p7 rootwait snd_soc_core.prealloc_buffer_size_kbytes=16 coherent_pool=0";
 	};
 
 	acodec_sound: acodec-sound {
@@ -312,6 +312,7 @@
 /***************************** PINCTRL ********************************/
 // SPI
 &spi0 {
+	pinctrl-names = "default";
 	pinctrl-0 = <&spi0m0_clk &spi0m0_miso &spi0m0_mosi &spi0m0_cs0>;
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -320,11 +321,16 @@
 		compatible = "adafruit,yx240qv29", "ilitek,ili9341";
 		reg = <0>;
 		spi-max-frequency = <32000000>;
-
+		bgr;
 		fps = <30>;
-		rotation = <90>;
-		reset-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
-		dc-gpios = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
+		buswidth = <8>;
+		rotate = <270>;
+		reset = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
+		dc = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
+
+//		rotation = <270>;
+//		reset-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
+//		dc-gpios = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
 	};
 };
 // I2C
