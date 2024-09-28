@@ -318,19 +318,16 @@
 	#size-cells = <0>;
 
 	display@0{
-		compatible = "adafruit,yx240qv29", "ilitek,ili9341";
+//		compatible = "adafruit,yx240qv29", "ilitek,ili9341";
+		compatible = "galaxycore,gc9d01";
 		reg = <0>;
 		spi-max-frequency = <32000000>;
 		bgr;
 		fps = <30>;
 		buswidth = <8>;
-		rotate = <270>;
+		rotate = <0>;
 		reset = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
 		dc = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
-
-//		rotation = <270>;
-//		reset-gpios = <&gpio1 RK_PC4 GPIO_ACTIVE_HIGH>;
-//		dc-gpios = <&gpio1 RK_PD0 GPIO_ACTIVE_HIGH>;
 	};
 };
 // I2C
